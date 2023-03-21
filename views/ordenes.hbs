@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Búsqueda de órdenes</title>
+  </head>
+  <body>
+    <h1>Búsqueda de órdenes</h1>
+    <form method="GET" action="/ordenes">
+      <label for="rut">RUT del cliente:</label>
+      <input type="text" name="rut" id="rut">
+      <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Listado de órdenes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Productos</th>
+          <th>Dirección de entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orders}}
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.cliente_rut}}</td>
+          <td>{{this.fecha}}</td>
+          <td>{{this.total}}</td>
+          <td>
+            <ul>
+              {{#each this.productos}}
+              <li>{{this.cantidad}} x {{this.nombre}} ({{this.precio_unitario}})</li>
+              {{/each}}
+            </ul>
+          </td>
+          <td>{{this.direccion_entrega}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>

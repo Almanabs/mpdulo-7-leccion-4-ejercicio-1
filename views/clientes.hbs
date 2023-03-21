@@ -1,0 +1,21 @@
+    <h1>Listado de clientes</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>RUT</th>
+          <th>Edad</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each clientes}}
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>{{this.rut}}</td>
+          <td>{{this.edad}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  
+

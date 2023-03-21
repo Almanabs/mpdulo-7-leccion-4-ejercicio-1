@@ -1,0 +1,73 @@
+
+
+    <h1>Mi perfil</h1>
+    <h2>Mis datos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>RUT</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each clientes}}
+        <tr>
+          <td>{{this.rut}}</td>
+          <td>{{this.nombre}}</td>
+          <td>{{this.edad}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <h2>Mis direcciones</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>RUT del cliente</th>
+          <th>Dirección</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each direcciones}}
+        <tr>
+          <td>{{this.cliente_rut}}</td>
+          <td>{{this.direccion}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <h2>Mis órdenes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Productos</th>
+          <th>Dirección de entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ordenes}}
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.cliente_rut}}</td>
+          <td>{{this.fecha}}</td>
+          <td>{{this.total}}</td>
+          <td>
+            <ul>
+              {{#each this.productos}}
+              <li>{{this.cantidad}} x {{this.nombre}} ({{this.precio_unitario}})</li>
+              {{/each}}
+            </ul>
+          </td>
+          <td>{{this.direccion_entrega}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+ 

@@ -1,0 +1,64 @@
+<h1>Crear una nueva orden</h1>
+    <form method="POST" action="/crear-orden">
+      <label for="rut">RUT del cliente:</label>
+      <input type="text" name="rut" id="rut">
+        <label for="direccion_entrega">Dirección de entrega:</label>
+  <input type="text" name="direccion_entrega" id="direccion_entrega">
+
+  <h2>Productos:</h2>
+  <table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio unitario</th>
+      <th>Stock disponible</th>
+      <th>Cantidad</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each productos}}
+    <tr>
+      <td>{{this.nombre}}</td>
+      <td>{{this.precio_unitario}}</td>
+      <td>{{this.stock}}</td>
+      <td><input type="number" name="productos[{{this.id}}][cantidad]" min="1" max="{{this.stock}}" value="1"></td>
+      <td>
+        {{#if (eq this.nombre 'A')}}
+        <button type="button" class="agregar-producto" data-producto-id="{{this.id}}">Agregar producto A</button>
+        {{/if}}
+        {{#if (eq this.nombre 'B')}}
+        <button type="button" class="agregar-producto" data-producto-id="{{this.id}}">Agregar producto B</button>
+        {{/if}}
+        {{#if (eq this.nombre 'C')}}
+        <button type="button" class="agregar-producto" data-producto-id="{{this.id}}">Agregar producto C</button>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio unitario</th>
+        <th>Stock disponible</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each productos}}
+      <tr>
+        <td>{{this.nombre}}</td>
+        <td>{{this.precio_unitario}}</td>
+        <td>{{this.stock}}</td>
+        <td><input type="number" name="productos[{{this.id}}][cantidad]" min="1" max="{{this.stock}}" value="1"></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <button type="submit">Crear orden</button>
+</form>
